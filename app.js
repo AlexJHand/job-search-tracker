@@ -2,10 +2,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 // Port 
 const port = process.env.PORT || 4501;
+
+// MongoDB Connection
+mongoose.connect('mongodb://localhost/jobtracker');
 
 // Require Routers
 const indexRouter = require('./routes/index.router');
