@@ -4,5 +4,8 @@ This application is for keeping track of data relevant to a professional's job s
 ## Built With
 React.js, Node.js, MongoDB, Create React App
 
+### To-Dos
+- User authentication with Passport
+
 ## Author 
 Alex Hand
