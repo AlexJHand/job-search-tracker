@@ -6,6 +6,11 @@ React.js, Node.js, MongoDB, Create React App
 
 ### To-Dos
 - User authentication with Passport
+- Front end display of added application entries
+- Add entry
+- Delete entry
+- Update entry
+- Filtering
 
 ## Author 
 Alex Hand
