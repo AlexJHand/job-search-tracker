@@ -16,6 +16,9 @@ mongoose.connect('mongodb://localhost/jobtracker');
 const indexRouter = require('./routes/index.router');
 const userRouter = require('./routes/user.router');
 
+// Require Passport
+const passport = require('./passport');
+
 // Middleware
 app.use(express.static('./client/build'));
 app.use(bodyParser.json());
@@ -28,7 +31,11 @@ app.use(
         resave: false,
         saveUninitialized: false
     })
-)
+);
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Use Routers
 app.use('/user', userRouter);
