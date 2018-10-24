@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const dbConnection = require('./database')
+const MongoStore = require('connect-mongo')(session)
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -10,7 +12,7 @@ require('dotenv').config();
 const port = process.env.PORT || 4501;
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost/jobtracker');
+// mongoose.connect('mongodb://localhost/jobtracker');
 
 // Require Routers
 const indexRouter = require('./routes/index.router');
@@ -28,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(
     session({
         secret: 'this is the default passphrase',
+        store: new MongoStore({ mongooseConnection: dbConnection }),
         resave: false,
         saveUninitialized: false
     })
