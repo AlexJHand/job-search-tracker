@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login';
+import Navbar from './Layout/Navbar';
 import SignUp from './Pages/SignUp';
 import './App.css';
 
@@ -64,6 +65,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar updateUser={this.state.updateUser} loggedIn={this.state.loggedIn} />
         <Main updateUser={this.updateUser} />
       </div>
     );
