@@ -12,9 +12,8 @@ import './App.css';
 const Main = (props) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' component={Dashboard} />
-      {/* <Route path='/login' component={Login} updateUser={props.updateUser}/> */}
-      <Route path='/login' render={() => <Login {...props} updateUser={props.updateUser}/>} />
+      <Route exact path='/' render={() => <Dashboard {...props} updateUser={props.updateUser} redirect={props.redirect}/>} />
+      <Route path='/login' render={() => <Login {...props} updateUser={props.updateUser} redirectPage={props.redirectPage}/>} />
       <Route path='/signup' component={SignUp} />
     </Switch>
   </BrowserRouter>
@@ -26,15 +25,24 @@ class App extends Component {
 
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      redirect: null
     }
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
+    this.redirectPage = this.redirectPage.bind(this);
     this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount() {
     this.getUser()
+  }
+
+  redirectPage(page) {
+    console.log('page', page);
+    this.setState({
+      redirect: page
+    })
   }
 
   updateUser(userObject) {
@@ -70,9 +78,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        <Main updateUser={this.updateUser} />
-        {/* <Main /> */}
+        <Navbar 
+          updateUser={this.updateUser} 
+          loggedIn={this.state.loggedIn} 
+          redirect={this.state.redirect} 
+          redirectPage={this.redirectPage}
+        />
+        <Main 
+          updateUser={this.updateUser} 
+          redirect={this.state.redirect} 
+          redirectPage={this.redirectPage}
+        />
       </div>
     );
   }

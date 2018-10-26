@@ -20,6 +20,7 @@ export default class Navbar extends React.Component {
                         loggedIn: false,
                         username: null
                     })
+                    this.props.redirectPage('/login');
                 }
             })
             .catch(error => {
