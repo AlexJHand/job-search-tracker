@@ -9,11 +9,12 @@ import Navbar from './Layout/Navbar';
 import SignUp from './Pages/SignUp';
 import './App.css';
 
-const Main = () => (
+const Main = (props) => (
   <BrowserRouter>
     <Switch>
       <Route exact path='/' component={Dashboard} />
-      <Route path='/login' component={Login} />
+      {/* <Route path='/login' component={Login} updateUser={props.updateUser}/> */}
+      <Route path='/login' render={() => <Login {...props} updateUser={props.updateUser}/>} />
       <Route path='/signup' component={SignUp} />
     </Switch>
   </BrowserRouter>
@@ -37,7 +38,11 @@ class App extends Component {
   }
 
   updateUser(userObject) {
-    this.setState(userObject)
+    console.log('userObject', userObject);
+    this.setState({
+      loggedIn: userObject.loggedIn,
+      username: userObject.username
+    })
   }
 
   getUser() {
@@ -65,8 +70,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar updateUser={this.state.updateUser} loggedIn={this.state.loggedIn} />
+        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         <Main updateUser={this.updateUser} />
+        {/* <Main /> */}
       </div>
     );
   }

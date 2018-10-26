@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-class Login extends Component {
-    constructor() {
-        super()
+export default class Login extends Component {
+    constructor(props) {
+        super(props)
         this.state = {
             username: '',
             password: '',
@@ -31,7 +31,6 @@ class Login extends Component {
                 password: this.state.password
             })
             .then(response => {
-                console.log('login response: ')
                 console.log(response)
                 if (response.status === 200) {
                     // update App.js state
@@ -45,14 +44,13 @@ class Login extends Component {
                     })
                 }
             }).catch(error => {
-                console.log('login error: ')
-                console.log(error);
+                console.log('error', error);
 
             })
     }
 
     render() {
-        const redirect = this.state.redirectTo;
+        // const redirect = this.state.redirectTo;
 
         if (this.state.redirectTo) {
         // if (redirect) {
@@ -105,5 +103,3 @@ class Login extends Component {
         }
     }
 }
-
-export default Login;

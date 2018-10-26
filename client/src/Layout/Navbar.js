@@ -14,7 +14,7 @@ export default class Navbar extends React.Component {
         console.log('Logging out');
         axios.post('/user/logout')
             .then(response => {
-                console.log(response.data);
+                console.log(response);
                 if (response.status === 200) {
                     this.props.updateUser({
                         loggedIn: false,
@@ -23,7 +23,8 @@ export default class Navbar extends React.Component {
                 }
             })
             .catch(error => {
-                console.log('Logout error');
+                console.log('error', error);
+                
             })
         
     }
@@ -31,7 +32,15 @@ export default class Navbar extends React.Component {
     render() {
         const loggedIn = this.props.loggedIn;
         return (
-            <div></div>
+            <div>
+                <div>
+                    {loggedIn ? (
+                        <div onClick={this.logout} >Logout</div>
+                    ) : (
+                        <div>Login</div>
+                    )}
+                </div>
+            </div>
         )
     }
 }
