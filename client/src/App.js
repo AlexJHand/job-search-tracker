@@ -12,8 +12,17 @@ import './App.css';
 const Main = (props) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' render={() => <Dashboard {...props} updateUser={props.updateUser} redirect={props.redirect}/>} />
-      <Route path='/login' render={() => <Login {...props} updateUser={props.updateUser} redirectPage={props.redirectPage}/>} />
+      <Route exact path='/' render={() => <Dashboard 
+                                            {...props} 
+                                            updateUser={props.updateUser} 
+                                            redirect={props.redirect}/>} 
+                                            redirectPage={props.redirectPage}
+                                            />
+      <Route path='/login' render={() => <Login 
+                                          {...props} 
+                                          updateUser={props.updateUser} 
+                                          redirectPage={props.redirectPage}/>} 
+                                          />
       <Route path='/signup' component={SignUp} />
     </Switch>
   </BrowserRouter>
@@ -26,7 +35,7 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      redirect: null
+      redirect: 'login'
     }
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)

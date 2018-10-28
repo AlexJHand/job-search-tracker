@@ -5,6 +5,10 @@ export default class Dashboard extends React.Component{
     constructor(props) {
         super(props);
     }
+
+    componentDidMount() {
+        this.props.redirectPage(null);
+    }
     
     render() {
         if( this.props.redirect) {
