@@ -6,6 +6,7 @@ import axios from 'axios';
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login';
 import Navbar from './Layout/Navbar';
+import NewApplication from './Pages/NewApplication';
 import SignUp from './Pages/SignUp';
 import './App.css';
 
@@ -17,12 +18,17 @@ const Main = (props) => (
                                             updateUser={props.updateUser} 
                                             redirect={props.redirect}/>} 
                                             redirectPage={props.redirectPage}
-                                            />
+      />
       <Route path='/login' render={() => <Login 
                                           {...props} 
                                           updateUser={props.updateUser} 
                                           redirectPage={props.redirectPage}/>} 
-                                          />
+      />
+      <Route path='/new' render={() => <NewApplication
+                                          {...props}
+                                          updateUser={props.updateUser} 
+                                          redirectPage={props.redirectPage} />}
+      />
       <Route path='/signup' component={SignUp} />
     </Switch>
   </BrowserRouter>
