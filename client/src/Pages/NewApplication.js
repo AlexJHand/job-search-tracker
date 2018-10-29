@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../Utilities/API';
 
 export default class NewApplication extends React.Component {
     constructor(props) {
@@ -19,6 +20,10 @@ export default class NewApplication extends React.Component {
         })
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
     render() {
         return (
             <div>
@@ -33,6 +38,9 @@ export default class NewApplication extends React.Component {
                         placeholder="Position" 
                         onChange={(event) => this.handleChange("position", event)}
                     />
+                    <button type="submit" >
+                        Submit
+                    </button>
                 </form>
             </div>
         )
