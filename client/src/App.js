@@ -27,7 +27,8 @@ const Main = (props) => (
       <Route path='/new' render={() => <NewApplication
                                           {...props}
                                           updateUser={props.updateUser} 
-                                          redirectPage={props.redirectPage} />}
+                                          redirectPage={props.redirectPage} 
+                                          userId={props.userId}/>}
       />
       <Route path='/signup' component={SignUp} />
     </Switch>
@@ -40,6 +41,7 @@ class App extends Component {
 
     this.state = {
       loggedIn: false,
+      userId: null,
       username: null,
       redirect: 'login'
     }
@@ -64,6 +66,7 @@ class App extends Component {
     console.log('userObject', userObject);
     this.setState({
       loggedIn: userObject.loggedIn,
+      userId: userObject._id,
       username: userObject.username
     })
   }
@@ -77,12 +80,14 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
+          userId: response.data.user._id,
           username: response.data.user.username
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
+          userId: null,
           username: null
         })
       }
@@ -103,6 +108,7 @@ class App extends Component {
           updateUser={this.updateUser} 
           redirect={this.state.redirect} 
           redirectPage={this.redirectPage}
+          userId={this.state.userId}
         />
       </div>
     );

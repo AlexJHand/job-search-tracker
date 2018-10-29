@@ -25,6 +25,7 @@ export default class NewApplication extends React.Component {
         event.preventDefault();
         console.log("handleSubmit");
         API.createApplication({
+            userId: this.props.userId,
             companyName: this.state.companyName,
             position: this.state.position
         })
