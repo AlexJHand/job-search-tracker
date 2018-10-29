@@ -11,6 +11,7 @@ export default class NewApplication extends React.Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(stateProperty, formValue) {
@@ -22,6 +23,12 @@ export default class NewApplication extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log("handleSubmit");
+        API.createApplication({
+            companyName: this.state.companyName,
+            position: this.state.position
+        })
+            .then(() => console.log("Post successful"))
     }
 
     render() {
@@ -38,7 +45,8 @@ export default class NewApplication extends React.Component {
                         placeholder="Position" 
                         onChange={(event) => this.handleChange("position", event)}
                     />
-                    <button type="submit" >
+                    <button type="submit" 
+                        onClick={this.handleSubmit}>
                         Submit
                     </button>
                 </form>

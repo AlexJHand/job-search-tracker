@@ -15,6 +15,7 @@ const port = process.env.PORT || 4501;
 // mongoose.connect('mongodb://localhost/jobtracker');
 
 // Require Routers
+const applicationRouter = require('./routes/application.router');
 const indexRouter = require('./routes/index.router');
 const userRouter = require('./routes/user.router');
 
@@ -41,6 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Use Routers
+app.use('/application', applicationRouter);
 app.use('/user', userRouter);
 app.use('/', indexRouter);
 

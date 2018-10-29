@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 // Application Schema
 const applicationSchema = new Schema({
-    user: {
-        type: String,
-        required: true
-    },
+    // user: {
+    //     type: String,
+    //     required: true
+    // },
     companyName: {
         type: String,
         required: true
@@ -16,4 +16,8 @@ const applicationSchema = new Schema({
         type: String, 
         required: true
     }
-})
+});
+
+const Application = mongoose.model("Application", applicationSchema);
+
+module.exports = Application;
