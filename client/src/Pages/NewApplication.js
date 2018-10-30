@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import API from '../Utilities/API';
 
 export default class NewApplication extends React.Component {
@@ -12,6 +13,10 @@ export default class NewApplication extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.redirectPage(null);
     }
 
     handleChange(stateProperty, formValue) {
@@ -29,29 +34,37 @@ export default class NewApplication extends React.Component {
             companyName: this.state.companyName,
             position: this.state.position
         })
-            .then(() => console.log("Post successful"))
+            .then(response => {
+                console.log("Post successful")
+                this.props.redirectPage('/');
+            })
     }
 
     render() {
-        return (
-            <div>
-                <form>
-                    <input 
-                        type="text" 
-                        placeholder="Company Name" 
-                        onChange={(event) => this.handleChange("companyName", event)}
-                    />
-                    <input 
-                        type="text" 
-                        placeholder="Position" 
-                        onChange={(event) => this.handleChange("position", event)}
-                    />
-                    <button type="submit" 
-                        onClick={this.handleSubmit}>
-                        Submit
-                    </button>
-                </form>
-            </div>
-        )
+        if (this.props.redirect) {
+            return <Redirect to={{ pathname: this.props.redirect }} />
+
+        } else {
+            return (
+                <div>
+                    <form>
+                        <input 
+                            type="text" 
+                            placeholder="Company Name" 
+                            onChange={(event) => this.handleChange("companyName", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("position", event)}
+                        />
+                        <button type="submit" 
+                            onClick={this.handleSubmit}>
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            )
+        }
     }
 }

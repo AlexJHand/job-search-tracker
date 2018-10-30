@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Link, NavLink, Redirect, Route} from 'react-router-dom';
+// import {BrowserRouter, Link, NavLink, Redirect, Route} from 'react-router-dom';
 import axios from 'axios';
 
 export default class Navbar extends React.Component {
@@ -7,6 +7,7 @@ export default class Navbar extends React.Component {
         super(props);
 
         this.logout = this.logout.bind(this);
+        this.navRedirect = this.navRedirect.bind(this);
         this.redirectToLogin = this.redirectToLogin.bind(this);
     }
 
@@ -29,6 +30,11 @@ export default class Navbar extends React.Component {
             })
     }
 
+    navRedirect(destination) {
+        console.log("Navigate to: ", destination);
+        this.props.redirectPage(destination)
+    }
+
     redirectToLogin() {
         this.props.redirectPage('/login')
     }
@@ -39,7 +45,10 @@ export default class Navbar extends React.Component {
             <div>
                 <div>
                     {loggedIn ? (
-                        <div onClick={this.logout} >Logout</div>
+                        <div>
+                            <div onClick={() => this.navRedirect('/new')}>Add New Application</div>
+                            <div onClick={this.logout} >Logout</div>
+                        </div>
                     ) : (
                             <div onClick={this.redirectToLogin}>Login</div>
                     )}
