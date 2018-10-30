@@ -20,12 +20,12 @@ export default class Dashboard extends React.Component{
     }
     
     render() {
-        // if( this.props.redirect) {
-        //     return <Redirect to={{ pathname: this.props.redirect }} />
-        // } else {
-        //     return <div>Dashboard</div>
-        // }
+        if( this.props.redirect) {
+            return <Redirect to={{ pathname: this.props.redirect }} />
+        } else {
+            return <div>Dashboard</div>
+        }
 
-        return <div>Dashboard</div>
+        // return <div>Dashboard</div>
     }
 }

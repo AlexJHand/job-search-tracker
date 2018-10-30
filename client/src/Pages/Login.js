@@ -7,8 +7,7 @@ export default class Login extends Component {
         super(props)
         this.state = {
             username: '',
-            password: '',
-            redirectTo: null
+            password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -43,10 +42,6 @@ export default class Login extends Component {
                         username: response.data.username,
                         userId: response.data.id
                     })
-                    // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
                     this.props.redirectPage('/');
                 }
             }).catch(error => {
@@ -56,11 +51,9 @@ export default class Login extends Component {
     }
 
     render() {
-        // const redirect = this.state.redirectTo;
-
-        if (this.state.redirectTo) {
-        // if (redirect) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        if (this.props.redirect) {
+            return <Redirect to={{ pathname: this.props.redirect }} />
+        
         } else {
             return (
                 <div>
