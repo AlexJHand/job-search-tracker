@@ -18,6 +18,7 @@ const Main = (props) => (
                                             updateUser={props.updateUser} 
                                             redirect={props.redirect}/>} 
                                             redirectPage={props.redirectPage}
+                                            userId={props.userId}
       />
       <Route path='/login' render={() => <Login 
                                           {...props} 
@@ -43,7 +44,8 @@ class App extends Component {
       loggedIn: false,
       userId: null,
       username: null,
-      redirect: 'login'
+      userChecked: false,
+      redirect: '/login'
     }
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -66,7 +68,7 @@ class App extends Component {
     console.log('userObject', userObject);
     this.setState({
       loggedIn: userObject.loggedIn,
-      userId: userObject._id,
+      userId: userObject.userId,
       username: userObject.username
     })
   }
@@ -81,14 +83,16 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           userId: response.data.user._id,
-          username: response.data.user.username
+          username: response.data.user.username,
+          userChecked: true
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           userId: null,
-          username: null
+          username: null,
+          userChecked: true
         })
       }
     })
@@ -96,7 +100,8 @@ class App extends Component {
 
 
   render() {
-    return (
+    if(this.state.userChecked) {
+       return (
       <div className="App">
         <Navbar 
           updateUser={this.updateUser} 
@@ -112,6 +117,10 @@ class App extends Component {
         />
       </div>
     );
+    } else {
+      return <div></div>
+    }
+   
   }
 }
 

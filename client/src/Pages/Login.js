@@ -40,12 +40,14 @@ export default class Login extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        username: response.data.username,
+                        userId: response.data.id
                     })
                     // update the state to redirect to home
                     this.setState({
                         redirectTo: '/'
                     })
+                    this.props.redirectPage('/');
                 }
             }).catch(error => {
                 console.log('error', error);
