@@ -8,6 +8,7 @@ export default class NewApplication extends React.Component {
 
         this.state = {
             companyName: null,
+            companySite: null,
             position: null
         }
 
@@ -32,6 +33,7 @@ export default class NewApplication extends React.Component {
         API.createApplication({
             userId: this.props.userId,
             companyName: this.state.companyName,
+            companySite: this.state.companySite,
             position: this.state.position
         })
             .then(response => {
@@ -52,6 +54,11 @@ export default class NewApplication extends React.Component {
                             type="text" 
                             placeholder="Company Name" 
                             onChange={(event) => this.handleChange("companyName", event)}
+                        />
+                        <input 
+                            type="url"
+                            placeholder="Company Website"
+                            onChange={(event) => this.handleChange("companySite", event)}
                         />
                         <input 
                             type="text" 

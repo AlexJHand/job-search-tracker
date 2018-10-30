@@ -12,6 +12,10 @@ const applicationSchema = new Schema({
         type: String,
         required: true
     },
+    companySite: {
+        type: String,
+        required: false
+    },
     position: {
         type: String, 
         required: true

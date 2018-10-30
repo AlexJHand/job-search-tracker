@@ -36,6 +36,8 @@ export default class Dashboard extends React.Component{
     
     render() {
         if( this.props.redirect) {
+            console.log("Dashboard redirect", this.props);
+            
             return <Redirect to={{ pathname: this.props.redirect }} />
         } else {
             return (
