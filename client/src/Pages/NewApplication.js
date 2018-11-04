@@ -9,7 +9,8 @@ export default class NewApplication extends React.Component {
         this.state = {
             companyName: null,
             companySite: null,
-            position: null
+            position: null,
+            dateApplied: null
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,7 +35,8 @@ export default class NewApplication extends React.Component {
             userId: this.props.userId,
             companyName: this.state.companyName,
             companySite: this.state.companySite,
-            position: this.state.position
+            position: this.state.position,
+            dateApplied: this.state.dateApplied
         })
             .then(response => {
                 console.log("Post successful")
@@ -64,6 +66,11 @@ export default class NewApplication extends React.Component {
                             type="text" 
                             placeholder="Position" 
                             onChange={(event) => this.handleChange("position", event)}
+                        />
+                        <input 
+                            type="date"
+                            placeholder="Date Applied"
+                            onChange={(event) => this.handleChange("dateApplied", event)}
                         />
                         <button type="submit" 
                             onClick={this.handleSubmit}>

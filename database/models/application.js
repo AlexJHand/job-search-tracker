@@ -19,6 +19,10 @@ const applicationSchema = new Schema({
     position: {
         type: String, 
         required: true
+    },
+    dateApplied: {
+        type: Date,
+        required: true
     }
 });
 
