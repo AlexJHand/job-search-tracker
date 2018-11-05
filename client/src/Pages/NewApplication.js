@@ -10,7 +10,8 @@ export default class NewApplication extends React.Component {
             companyName: null,
             companySite: null,
             position: null,
-            dateApplied: null
+            dateApplied: null,
+            howApplied: null
         }
 
         this.handleChange = this.handleChange.bind(this);
