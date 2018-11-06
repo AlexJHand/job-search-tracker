@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
-    "node-sass": "^4.9.4"
+    "enzyme": "^3.7.0",
+    "node-sass": "^4.9.4",
+    "sinon": "^7.1.1"
   }
 }
