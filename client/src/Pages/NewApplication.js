@@ -37,7 +37,8 @@ export default class NewApplication extends React.Component {
             companyName: this.state.companyName,
             companySite: this.state.companySite,
             position: this.state.position,
-            dateApplied: this.state.dateApplied
+            dateApplied: this.state.dateApplied,
+            howApplied: this.state.howApplied
         })
             .then(response => {
                 console.log("Post successful")
@@ -72,6 +73,11 @@ export default class NewApplication extends React.Component {
                             type="date"
                             placeholder="Date Applied"
                             onChange={(event) => this.handleChange("dateApplied", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("howApplied", event)}
                         />
                         <button type="submit" 
                             onClick={this.handleSubmit}>
