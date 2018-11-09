@@ -12,7 +12,11 @@ export default class NewApplication extends React.Component {
             position: null,
             dateApplied: null,
             howApplied: null,
-            howHeard: null
+            howHeard: null,
+            contactName: null,
+            contactTitle: null,
+            contactEmail: null,
+            contactPhone: null
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -40,7 +44,11 @@ export default class NewApplication extends React.Component {
             position: this.state.position,
             dateApplied: this.state.dateApplied,
             howApplied: this.state.howApplied,
-            howHeard: this.state.howHeard
+            howHeard: this.state.howHeard,
+            contactName: this.state.contactName,
+            contactTitle: this.state.contactTitle,
+            contactEmail: this.state.contactEmail,
+            contactPhone: this.state.contactPhone
         })
             .then(response => {
                 console.log("Post successful")
@@ -85,6 +93,26 @@ export default class NewApplication extends React.Component {
                             type="text" 
                             placeholder="Position" 
                             onChange={(event) => this.handleChange("howHeard", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("contactName", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("contactTitle", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("contactEmail", event)}
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Position" 
+                            onChange={(event) => this.handleChange("contactPhone", event)}
                         />
                         <button type="submit" 
                             onClick={this.handleSubmit}>
