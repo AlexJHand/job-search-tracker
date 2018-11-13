@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
     render() {
         const loggedIn = this.props.loggedIn;
         return (
-            <div>
+            <div className="navbar">
                 <div>
                     {loggedIn ? (
                         <div>
