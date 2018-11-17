@@ -43,16 +43,16 @@ export default class Navbar extends React.Component {
         const loggedIn = this.props.loggedIn;
         return (
             <div className="navbar">
-                <div>
-                    {loggedIn ? (
-                        <div>
-                            <div onClick={() => this.navRedirect('/new')}>Add New Application</div>
-                            <div onClick={this.logout} >Logout</div>
-                        </div>
-                    ) : (
-                            <div onClick={this.redirectToLogin}>Login</div>
-                    )}
-                </div>
+                {loggedIn ? (
+                    <div className="navbar__links">
+                        <div className="navbar__links-item" onClick={() => this.navRedirect('/new')}>Add New Application</div>
+                        <div className="navbar__links-item" onClick={this.logout} >Logout</div>
+                    </div>
+                ) : (
+                    <div className="navbar__links">
+                        <div className="navbar__links-item" onClick={this.redirectToLogin}>Login</div>
+                    </div>
+                )}
             </div>
         )
     }
