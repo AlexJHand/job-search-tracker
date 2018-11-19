@@ -56,7 +56,7 @@ export default class Login extends Component {
         
         } else {
             return (
-                <div>
+                <div className="login">
                     <h4>Login</h4>
                     <form className="form-horizontal">
                         <div className="form-group">

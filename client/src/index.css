@@ -26,3 +26,7 @@ html {
     justify-content: space-between; }
   .navbar__links-item {
     cursor: pointer; }
+
+.login {
+  color: #9cb3c9;
+  background-color: #0f273d; }
