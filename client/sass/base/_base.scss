@@ -9,9 +9,24 @@
 html {
     // This defines what 1rem is 
     font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%;
+    height: 100%;
 }
 
 body {
     // font-family: 'Rubik', sans-serif;
-    // background-color: #0f273d;
+    height: 100%;
+}
+
+.App{
+    height: 100%;
+    width: 100%;
+    
+    &__content {
+        height: 100%;
+        width: 100%;
+        background-color: $color-background-secondary;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 }

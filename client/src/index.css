@@ -6,7 +6,22 @@
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  height: 100%; }
+
+body {
+  height: 100%; }
+
+.App {
+  height: 100%;
+  width: 100%; }
+  .App__content {
+    height: 100%;
+    width: 100%;
+    background-color: #0c2033;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
 
 .navbar {
   width: 100%;
@@ -28,5 +43,7 @@ html {
     cursor: pointer; }
 
 .login {
+  height: 90%;
+  width: 80%;
   color: #9cb3c9;
   background-color: #0f273d; }

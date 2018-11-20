@@ -109,12 +109,14 @@ class App extends Component {
           redirect={this.state.redirect} 
           redirectPage={this.redirectPage}
         />
-        <Main 
-          updateUser={this.updateUser} 
-          redirect={this.state.redirect} 
-          redirectPage={this.redirectPage}
-          userId={this.state.userId}
-        />
+        <div className="App__content">
+          <Main 
+            updateUser={this.updateUser} 
+            redirect={this.state.redirect} 
+            redirectPage={this.redirectPage}
+            userId={this.state.userId}
+          />
+        </div>
       </div>
     );
     } else {
