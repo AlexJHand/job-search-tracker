@@ -62,7 +62,7 @@ export default class NewApplication extends React.Component {
 
         } else {
             return (
-                <div>
+                <div className="card">
                     <form>
                         <input 
                             type="text" 
