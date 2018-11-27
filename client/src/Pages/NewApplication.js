@@ -63,7 +63,7 @@ export default class NewApplication extends React.Component {
         } else {
             return (
                 <div className="card">
-                    <form>
+                    <form className="application-form">
                         <input 
                             type="text" 
                             placeholder="Company Name" 
