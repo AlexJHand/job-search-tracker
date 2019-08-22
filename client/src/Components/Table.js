@@ -6,7 +6,7 @@ const Table = (props) => {
     
     if (applications) {
         return (
-            <div>
+            < div className = "table" >
                 <table>
                     <thead>
                         <tr>
